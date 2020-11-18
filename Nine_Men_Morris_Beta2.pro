@@ -15,7 +15,8 @@ SOURCES += \
     boardpositionwidget.cpp \
     boardwidget.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    unittest.cpp
 
 HEADERS += \
     Board.h \
@@ -24,6 +25,7 @@ HEADERS += \
     Player.h \
     boardpositionwidget.h \
     boardwidget.h \
+    catch.hpp \
     mainwindow.h
 
 FORMS += \

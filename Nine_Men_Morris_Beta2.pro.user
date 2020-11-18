@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 4.13.2, 2020-11-17T02:47:40. -->
+<!-- Written by QtCreator 4.13.2, 2020-11-18T01:59:35. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
@@ -64,7 +64,12 @@
     <value type="bool" key="AutoTest.Framework.QtQuickTest">true</value>
     <value type="bool" key="AutoTest.Framework.QtTest">true</value>
    </valuemap>
-   <valuemap type="QVariantMap" key="AutoTest.CheckStates"/>
+   <valuemap type="QVariantMap" key="AutoTest.CheckStates">
+    <value type="Qt::CheckState" key="C:/Users/miste/Documents/CodeProj/QtProj/Nine_Men_Morris_Beta2/unittest.cpp:Board Class Tests">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/miste/Documents/CodeProj/QtProj/Nine_Men_Morris_Beta2/unittest.cpp:Board Position Class Tests">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/miste/Documents/CodeProj/QtProj/Nine_Men_Morris_Beta2/unittest.cpp:C:/Users/miste/Documents/CodeProj/QtProj/Nine_Men_Morris_Beta2/unittest.cpp">Checked</value>
+    <value type="Qt::CheckState" key="C:/Users/miste/Documents/CodeProj/QtProj/Nine_Men_Morris_Beta2/unittest.cpp:Player Class Tests">Checked</value>
+   </valuemap>
    <value type="int" key="AutoTest.RunAfterBuild">0</value>
    <value type="bool" key="AutoTest.UseGlobal">true</value>
    <valuelist type="QVariantList" key="ClangCodeModel.CustomCommandLineKey">
@@ -155,7 +160,7 @@
       <value type="bool" key="ProjectExplorer.BuildStep.Enabled">true</value>
       <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">QtProjectManager.QMakeBuildStep</value>
       <value type="QString" key="QtProjectManager.QMakeBuildStep.QMakeArguments"></value>
-      <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">true</value>
+      <value type="bool" key="QtProjectManager.QMakeBuildStep.QMakeForced">false</value>
       <valuelist type="QVariantList" key="QtProjectManager.QMakeBuildStep.SelectedAbis"/>
      </valuemap>
      <valuemap type="QVariantMap" key="ProjectExplorer.BuildStepList.Step.1">
