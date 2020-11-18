@@ -36,6 +36,8 @@ Board::Board()
     positions['d' - asciiOffset][4 - 1].setTerminator(true);
     positions['d' - asciiOffset][4 - 1].setValid(false);
 
+    state = phase1;
+
 
 }
 
