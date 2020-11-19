@@ -1,0 +1,52 @@
+#include "gtest/gtest.h"
+#include"Player.h"
+#include "Enum.h"
+#include <iostream>
+
+using namespace std;
+
+
+TEST(PlayerTest, StartingPiecesTest) {
+	Player p1(1, false);
+	EXPECT_EQ(9, p1.getPhase1Pieces());
+}
+
+//Time to fly - unit test
+//Given an ongoing game in the second phase, when a player is reduced to three pieces, then the text “Player X has entered Flight Mode!” is displayed.
+TEST(PlayerTest, timeToFlyUnitTest) {
+	Player p1(1, false);
+	Player p2(2, false);
+	
+	p1.setPhase2Pieces(3);
+	EXPECT_TRUE(true, p1.getFlight());
+
+	p2.setPhase2Pieces(4);
+	EXPECT_FALSE(false, p1.getFlight());
+}
+
+//Capturing Pieces Unit test.
+//Given an ongoing game in the first phase, when a player's piece is captured, then their active pieces in phase 1 decrements by 1.
+//Given an ongoing game in the second phase, when a player's piece is captured, then their active pieces in phase 2 decrements by 1.
+//Also test addPiece function
+TEST(PlayerTest, subtractingPiecesTest) {
+	GameStates gs1 = phase1;
+	GameStates gs2 = phase2;
+	Player p1(1, false);
+	p1.subtractPiece(gs1);
+	EXPECT_EQ(8, p1.getPhase1Pieces());
+
+	p1.addPiece();
+	p1.addPiece();
+	p1.addPiece();
+	p1.subtractPiece(gs2);
+	EXPECT_EQ(2, p1.getPhase2Pieces());
+}
+
+
+int main(int argc, char* argv[]) {
+	testing::InitGoogleTest(&argc, argv);
+	return RUN_ALL_TESTS();
+	system("pause");
+}
+
+
