@@ -17,6 +17,8 @@ TEST_CASE("Player Class Tests","[player]")
     int asciiOffset = 97;
     Player *p = &testBoard.getCurrentPlayer();
 
+
+
     SECTION("Initalization of player")
     {
         //Player should have 9 Phase 1 pieces, and 0 Phase 2 pieces
@@ -96,6 +98,16 @@ TEST_CASE("Board Class Tests", "[board]")
     testBoard.setCurrPlayerVar(1);
     int asciiOffset = 97;
 
+    SECTION("displaying board after a move")
+    {
+        testBoard.doMovePhase1('a',7,testBoard.getCurrentPlayer());
+        testBoard.displayBoard();
+        testBoard.setState(phase2);
+        testBoard.doMovePhase2('a',7,'a',4,testBoard.getCurrentPlayer());
+        testBoard.displayBoard();
+
+    }
+
     SECTION("Toggling Players Only Happens After Valid Move, MANUALLY")
     {
         //The game starts with "Player 1"
@@ -171,6 +183,9 @@ TEST_CASE("Board Class Tests", "[board]")
         REQUIRE(testBoard.isValidLocation('b',4,'a',4,testBoard.getCurrentPlayer())==false);
         //invalid move: goal is not adjacent
         REQUIRE(testBoard.isValidLocation('d',1,'a',4,testBoard.getCurrentPlayer())==false);
+        //valid move means the location now has the current player's id
+        testBoard.doMovePhase2('a',4,'a',7,testBoard.getCurrentPlayer());
+        REQUIRE(testBoard.getPositions()['a'-asciiOffset][7-1].getStatus() == testBoard.getCurrentPlayer().getPlayerID());
 
     }
 
@@ -188,6 +203,13 @@ TEST_CASE("Board Class Tests", "[board]")
         //and the board is aware as well
         testBoard.checkAndChangeState(testBoard.getPlayers().at(0),testBoard.getPlayers().at(1) );
         REQUIRE(testBoard.getState() == mill);
+
+        //if the player moves a piece out of a mill, then their stable mills goes down
+        testBoard.setState(phase2);
+        testBoard.doMovePhase2('a',1,'d',1,testBoard.getCurrentPlayer());
+        REQUIRE(testBoard.getCurrentPlayer().getStableMills() == 0);
+
+
     }
 
     SECTION("Phase 2 / General Flight Checks")
@@ -218,7 +240,7 @@ TEST_CASE("Board Class Tests", "[board]")
 
     }
 
-    SECTION("Phase Mill Removal Checks: No Mills")
+    SECTION("Phase Mill Removal Checks: General and No Mills")
     {
         //setup: we know this works from the unit test above
         testBoard.doMovePhase1('a',7,testBoard.getCurrentPlayer());
@@ -232,6 +254,9 @@ TEST_CASE("Board Class Tests", "[board]")
         REQUIRE(testBoard.getState() == mill);
         //Invalid: spot is empty
         REQUIRE(testBoard.removePiece('b',4,testBoard.getCurrentPlayer()) == false);
+        //Invalid: spot is owned by current player
+        REQUIRE(testBoard.removePiece('a',7,testBoard.getCurrentPlayer()) == false);
+
         //valid removal
         REQUIRE(testBoard.removePiece('g',7,testBoard.getCurrentPlayer()) == true);
         //check that the position you removed is now "empty"
