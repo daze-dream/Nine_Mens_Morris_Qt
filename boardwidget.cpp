@@ -96,6 +96,70 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
     positions['d' - asciiOffset][4 - 1].setValid(false);
     positionsW['d' - asciiOffset][4 - 1].setVisible(false);
 
+    //add "lines. Has to be done manually..."
+    QFrame *line[14];
+    for(int i = 0; i < 14; i++)
+    {
+        line[i] = new QFrame();
+        line[i]->setFrameShape(QFrame::HLine);
+        line[i]->setLineWidth(3);
+        //line[i]->setFrameShadow(QFrame::Sunken);
+    }
+
+    boardlayout->addWidget(line[1], 0, 1);
+    boardlayout->addWidget(line[2], 0, 2);
+    boardlayout->addWidget(line[3], 0, 4);
+    boardlayout->addWidget(line[4], 0, 5);
+
+    boardlayout->addWidget(line[5], 6, 1);
+    boardlayout->addWidget(line[6], 6, 2);
+    boardlayout->addWidget(line[7], 6, 4);
+    boardlayout->addWidget(line[8], 6, 5);
+
+
+    boardlayout->addWidget(line[10], 1, 2);
+    boardlayout->addWidget(line[11], 1, 4);
+
+    boardlayout->addWidget(line[12], 5, 2);
+    boardlayout->addWidget(line[13], 5, 4);
+
+    QFrame *line2[14];
+    for(int i = 0; i < 14; i++)
+    {
+        line2[i] = new QFrame();
+        line2[i]->setFrameShape(QFrame::VLine);
+        line2[i]->setLineWidth(3);
+    }
+
+    boardlayout->addWidget(line2[1], 1, 0);
+    boardlayout->setAlignment(line2[1],Qt::AlignHCenter);
+    boardlayout->addWidget(line2[2], 2, 0);
+    boardlayout->setAlignment(line2[2],Qt::AlignHCenter);
+    boardlayout->addWidget(line2[3], 4, 0);
+    boardlayout->setAlignment(line2[3],Qt::AlignHCenter);
+    boardlayout->addWidget(line2[4], 5, 0);
+    boardlayout->setAlignment(line2[4],Qt::AlignHCenter);
+
+
+    boardlayout->addWidget(line2[5], 1, 6);
+    boardlayout->setAlignment(line2[5],Qt::AlignHCenter);
+    boardlayout->addWidget(line2[6], 2, 6);
+    boardlayout->setAlignment(line2[6],Qt::AlignHCenter);
+    boardlayout->addWidget(line2[7], 4, 6);
+    boardlayout->setAlignment(line2[7],Qt::AlignHCenter);
+    boardlayout->addWidget(line2[8], 5, 6);
+    boardlayout->setAlignment(line2[8],Qt::AlignHCenter);
+
+    boardlayout->addWidget(line2[9], 2, 1);
+    boardlayout->setAlignment(line2[9],Qt::AlignHCenter);
+    boardlayout->addWidget(line2[10], 4, 1);
+    boardlayout->setAlignment(line2[10],Qt::AlignHCenter);
+    boardlayout->addWidget(line2[11], 2, 5);
+    boardlayout->setAlignment(line2[11],Qt::AlignHCenter);
+    boardlayout->addWidget(line2[12], 4, 5);
+    boardlayout->setAlignment(line2[12],Qt::AlignHCenter);
+
+
     //button style sheet
     hoverStyle();
 
@@ -110,6 +174,8 @@ BoardWidget::BoardWidget(QWidget *parent) : QWidget(parent)
     mainlayout->addLayout(statusLayout);
     mainlayout->setSizeConstraint(QLayout::SetFixedSize);
     setLayout(mainlayout);
+
+
 
     updateStatusList("----\nBoard Loaded. Begin Game \n Phase 1 Start ");
 

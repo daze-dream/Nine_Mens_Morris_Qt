@@ -12,6 +12,8 @@
 #include <QString>
 #include <QLabel>
 #include <QApplication>
+#include <QFrame>
+
 #include "Board.h"
 #include "boardpositionwidget.h"
 
